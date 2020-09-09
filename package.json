@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/dpgraham/sauce-test-portable/issues"
   },
-  "homepage": "https://github.com/dpgraham/sauce-test-portable#readme"
+  "homepage": "https://github.com/dpgraham/sauce-test-portable#readme",
+  "dependencies": {
+    "appium--v1.18.0": "npm:appium@1.18.0",
+    "appium--v1.18.1": "npm:appium@1.18.1",
+    "cypress--v5.1.0": "npm:cypress@5.1.0"
+  }
 }
