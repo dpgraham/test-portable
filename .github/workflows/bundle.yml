@@ -10,10 +10,8 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-
+  bundle-win:
     runs-on: windows-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js 14.x
