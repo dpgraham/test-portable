@@ -7,7 +7,5 @@ cp $(which node) ./bundles/bundle-win/node
 
 # Install dependencies
 pushd ./bundles/bundle-win/
-npm install yarn
-rm -rf package-lock.json
 CYPRESS_CACHE_FOLDER=$PWD/__cypress_cache_folder npm install
 popd
