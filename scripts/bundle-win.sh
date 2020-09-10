@@ -8,5 +8,6 @@ cp $(which npm) ./bundles/bundle-win/npm
 
 # Install dependencies
 pushd ./bundles/bundle-win/
+ls -lah ./
 CYPRESS_CACHE_FOLDER=$PWD/__cypress_cache_folder npm install
 popd
