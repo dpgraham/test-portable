@@ -19,9 +19,10 @@ jobs:
       with:
         node-version: 14.x
     - run: bash ./scripts/bundle-win.sh
-    - uses: montudor/action-zip@v0.1.0
+    - name: Archive bundle
       with:
-        args: zip -qq -r bundle-win.zip bundles/bundle-win
+        inlineScript: |
+          Compress-Archive bundles/bundle-win bundle-win.zip
     - name: Archive production artifacts
       uses: actions/upload-artifact@v2
       with:
