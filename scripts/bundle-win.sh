@@ -2,7 +2,7 @@
 
 # Move files over to ./bundles/bundle-win
 mkdir -p ./bundles/bundle-win
-cp -r ./files/win/ ./bundles/bundle-win/
+cp -r ./files/win/* ./bundles/bundle-win/*
 cp $(which node) ./bundles/bundle-win/node
 cp $(which npm) ./bundles/bundle-win/npm
 
