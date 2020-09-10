@@ -103,4 +103,5 @@ dist
 # TernJS port file
 .tern-port
 
-__cypress_cache/
+bundles/
+__cypress_cache
