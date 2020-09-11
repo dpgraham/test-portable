@@ -40,3 +40,17 @@ jobs:
         node-version: 14.x
     - name: Download bundle
       uses: actions/download-artifact@v2
+      with:
+        name: bundle-win.zip
+    - name: Unarchive bundle
+      uses: azure/powershell@v1
+      with:
+        inlineScript: |
+          Expand-Archive -Path bundle-win.zip -DestinationPath ./bundle-win
+    - name: Display contents of bundle
+      run: ls -lah ./bundle-win
+    - name: Run tests on bundle
+      run: bash ./test.sh
+      env:
+        CYPRESS_CACHE_FOLDER: ./bundle-win/__sauce/__cache/Cypress
+      
