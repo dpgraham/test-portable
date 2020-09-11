@@ -46,7 +46,7 @@ jobs:
       uses: azure/powershell@v1
       with:
         inlineScript: |
-          Expand-Archive -Path bundle-win.zip -DestinationPath ./bundle-win
+          Expand-Archive -Path .\bundle-win.zip
     - name: Display contents of bundle
       run: ls -lah ./bundle-win
     - name: Run tests on bundle

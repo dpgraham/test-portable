@@ -5,7 +5,6 @@
   "main": "index.js",
   "dependencies": {
     "cypress--v5.1.0": "npm:cypress@5.1.0",
-    "cypress--v4.12.1": "npm:cypress@4.12.1",
     "testcafe--v1.9.2": "npm:testcafe@1.9.2"
   },
   "devDependencies": {},
