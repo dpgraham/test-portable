@@ -1,0 +1,22 @@
+{
+  "name": "sauce-test-portable",
+  "version": "1.0.0",
+  "description": "A portable, multi-platform bundle with all your Sauce Labs testing needs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dpgraham/sauce-test-portable.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dpgraham/sauce-test-portable/issues"
+  },
+  "homepage": "https://github.com/dpgraham/sauce-test-portable#readme",
+  "dependencies": {
+    "appium--v1.18.1": "npm:appium@1.18.1"
+  }
+}
