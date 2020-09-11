@@ -1,33 +1,33 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Node.js CI
+name: Build and Test Bundles
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
 
-jobs:
-  bundle-win:
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js 14.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 14.x
-    - run: bash ./scripts/bundle-win.sh
-    - name: Archive bundle
-      uses: azure/powershell@v1
-      with:
-        inlineScript: |
-          Compress-Archive bundles/bundle-win bundle-win.zip
-        azPSVersion: '3.1.0'
-    - name: Archive production artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: bundle-win
-        path: |
-          bundle-win.zip
+stages:
+  - stage: Create Bundles
+    jobs:
+      bundle-win:
+        runs-on: windows-latest
+        steps:
+        - uses: actions/checkout@v2
+        - name: Use Node.js 14.x
+          uses: actions/setup-node@v1
+          with:
+            node-version: 14.x
+        - run: bash ./scripts/bundle-win.sh
+        - name: Archive bundle
+          uses: azure/powershell@v1
+          with:
+            inlineScript: |
+              Compress-Archive bundles/bundle-win bundle-win.zip
+            azPSVersion: '3.1.0'
+        - name: Archive production artifacts
+          uses: actions/upload-artifact@v2
+          with:
+            name: bundle-win
+            path: |
+              bundle-win.zip
