@@ -24,11 +24,11 @@ jobs:
     - name: Upload bundle
       uses: actions/upload-artifact@v2
       with:
-        name: bundle-win
+        name: bundle-win.zip
         path: |
           bundle-win.zip
 
-  # Test the bundles
+  # Download and test the bundles
   test-win:
     runs-on: windows-latest
     needs: bundle-win
