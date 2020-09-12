@@ -52,5 +52,5 @@ jobs:
       run: bash ./test.sh
       working-directory: ./bundle-win/__sauce/
       env:
-        CYPRESS_CACHE_FOLDER: ${{ env.working-directory }}/__cache/Cypress
+        CYPRESS_CACHE_FOLDER: $PWD/__cache/Cypress
       
