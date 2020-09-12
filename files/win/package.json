@@ -7,7 +7,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "bash ../test.sh"
+    "test": "echo 'You ran the test!'"
   },
   "repository": {
     "type": "git",
