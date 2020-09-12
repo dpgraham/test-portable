@@ -7,7 +7,9 @@
     "cypress--v5.1.0": "npm:cypress@5.1.0",
     "testcafe--v1.9.2": "npm:testcafe@1.9.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "bluebird": "^3.7.2"
+  },
   "scripts": {
     "test": "bash ./test.sh"
   },
