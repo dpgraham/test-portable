@@ -26,7 +26,7 @@ jobs:
       with:
         name: bundle-win
         path: |
-          ./bundles/bundle-win
+          ./bundle-win.zip
 
   # Download and test the bundles
   test-win:
