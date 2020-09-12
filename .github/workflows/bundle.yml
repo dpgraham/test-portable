@@ -56,7 +56,7 @@ jobs:
       working-directory: artifacts/
     - name: Run tests on bundle
       run: npm test
-      working-directory: ./bundle-win/__sauce/
+      working-directory: ./bundle-win/bundle-win/__sauce/
       env:
         CYPRESS_CACHE_FOLDER: $PWD/__cache/Cypress
       
