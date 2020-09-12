@@ -1,8 +1,20 @@
 #!/bin/bash
-mkdir -p ./bundles/bundle-win
-cp package-win.json ./bundles/bundle-win/package.json
-cp $(which yarn) ./bundles/bundle-win/yarn
-cp $(which node) ./bundles/bundle-win/node
+
+# Move files over to ./bundles/bundle-win
+mkdir -p ./bundles/bundle-win/
+mkdir -p ./bundles/bundle-win/__sauce/
+cp -r ./files/win/. ./bundles/bundle-win/__sauce/
+
+# Install dependencies
 pushd ./bundles/bundle-win/
-CYPRESS_CACHE_FOLDER=$PWD/__cypress_cache_folder ./yarn
+mkdir -p ./__sauce/
+mkdir -p ./__sauce/__cache/Cypress/
+cp $(which node) ./__sauce/node
+mv ./__sauce/package.json ./package.json
+npm config set cache $PWD/__sauce/__cache/npm/
+export CYPRESS_CACHE_FOLDER=$PWD/__sauce/__cache/Cypress/
+npm install
+mv ./package.json ./__sauce/package.json
+rm -rf package.json
+rm -rf package-lock.json
 popd

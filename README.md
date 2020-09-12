@@ -1,5 +1,5 @@
 # Test Portable
-A portable, multi-platform bundle with all your Sauce Labs testing needs
+A portable, multi-platform bundle with test dependencies pre-installed
 
 ## Contributing
 
