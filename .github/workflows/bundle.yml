@@ -28,7 +28,7 @@ jobs:
         path: |
           ./bundle-win.zip
 
-  # Download and test the bundles
+  # Download and test the bundle on another machine and test it
   test-win:
     runs-on: windows-latest
     needs: bundle-win
@@ -49,14 +49,14 @@ jobs:
       uses: azure/powershell@v1
       with:
         inlineScript: |
-          Expand-Archive -Path ./artifacts/bundle-win.zip -DestinationPath ./artifacts/bundle-win
+          Expand-Archive -Path ./artifacts/bundle-win.zip -DestinationPath ./artifacts/
         azPSVersion: '3.1.0'
     - name: Display structure of decompressed files
       run: ls -R
       working-directory: artifacts/
     - name: Run tests on bundle
       run: npm test
-      working-directory: artifacts/bundle-win/bundle-win/__sauce/
+      working-directory: artifacts/bundle-win/__sauce/
       env:
-        CYPRESS_CACHE_FOLDER: artifacts/bundle-win/bundle-win/__sauce/__cache/Cypress
+        CYPRESS_CACHE_FOLDER: __cache/Cypress
       
