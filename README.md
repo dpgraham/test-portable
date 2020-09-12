@@ -1,4 +1,4 @@
-# Sauce Test Portable
+# Test Portable
 A portable, multi-platform bundle with all your Sauce Labs testing needs
 
 ## Contributing
