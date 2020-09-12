@@ -14,6 +14,7 @@ mv ./__sauce/package.json ./package.json
 npm config set cache $PWD/__sauce/__cache/npm/
 export CYPRESS_CACHE_FOLDER=$PWD/__sauce/__cache/Cypress/
 npm install
+mv ./package.json ./__sauce/package.json
 rm -rf package.json
 rm -rf package-lock.json
 popd

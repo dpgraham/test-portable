@@ -48,10 +48,8 @@ jobs:
         inlineScript: |
           Expand-Archive -Path ./bundle-win.zip -DestinationPath ./bundle-win
         azPSVersion: '3.1.0'
-    - name: Echo bundle path contents
-      run: find ./bundle-win
     - name: Run tests on bundle
-      run: bash ./test.sh
+      run: npm test
       working-directory: ./bundle-win/__sauce/
       env:
         CYPRESS_CACHE_FOLDER: $PWD/__cache/Cypress
