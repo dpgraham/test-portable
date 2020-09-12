@@ -8,7 +8,7 @@ async function main () {
     for (const dependencyName of Object.keys(dependencies)) {
         if (dependencyName.startsWith('testcafe--')) {
             console.log('Verifying ' + dependencyName);
-            await promisify(exec)(`${path.join(__dirname, '..', '..', '..', 'node_modules', dependencyName, 'bin', 'testcafe-with-v8-flag-filter.js')} chrome ./tests/testcafe/test.js`);
+            await promisify(exec)(`${path.join(__dirname, '..', '..', '..', 'node_modules', dependencyName, 'bin', 'testcafe-with-v8-flag-filter.js')} edge ./tests/testcafe/test.js`);
             console.log('Successfully verified ' + dependencyName);
         }
     }
