@@ -40,10 +40,10 @@ jobs:
     - name: Download bundle
       uses: actions/download-artifact@v2
       with:
-        name: bundle-win/
+        path: artifacts/
     - name: Display structure of downloaded files
       run: ls -R
-      working-directory: bundle-win/
+      working-directory: artifacts/
     - name: Unarchive bundle
       uses: azure/powershell@v1
       with:
