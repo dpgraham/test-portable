@@ -1,0 +1,25 @@
+{
+    "name": "sauce-test-portable",
+    "version": "1.0.0",
+    "description": "A portable, multi-platform bundle with all your Sauce Labs testing needs",
+    "main": "index.js",
+    "dependencies": {
+      "cypress--v5.1.0": "npm:cypress@5.1.0",
+      "testcafe--v1.9.2": "npm:testcafe@1.9.2"
+    },
+    "devDependencies": {},
+    "scripts": {
+      "test": "bash ../test.sh"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/dpgraham/sauce-test-portable.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/dpgraham/sauce-test-portable/issues"
+    },
+    "homepage": "https://github.com/dpgraham/sauce-test-portable#readme"
+  }
+  

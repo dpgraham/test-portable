@@ -40,6 +40,7 @@ jobs:
     - name: Download bundle
       uses: actions/download-artifact@v2
       with:
+        name: bundle-win
         path: artifacts/
     - name: Display structure of downloaded files
       run: ls -R
@@ -48,8 +49,11 @@ jobs:
       uses: azure/powershell@v1
       with:
         inlineScript: |
-          Expand-Archive -Path ./bundle-win.zip -DestinationPath ./bundle-win
+          Expand-Archive -Path ./artifacts/bundle-win.zip -DestinationPath ./artifacts/bundle-win
         azPSVersion: '3.1.0'
+    - name: Display structure of decompressed files
+      run: ls -R
+      working-directory: artifacts/
     - name: Run tests on bundle
       run: npm test
       working-directory: ./bundle-win/__sauce/
