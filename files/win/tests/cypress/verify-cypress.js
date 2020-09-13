@@ -20,6 +20,8 @@ async function main () {
         await main();
         console.log('=======DONE VERIFYING CYPRESS INSTALLATIONS=======');
     } catch (e) {
-        console.log('=======FAILED VERIFYING CYPRESS INSTALLATIONS=====');
+        console.error(e);
+        console.error('=======FAILED VERIFYING CYPRESS INSTALLATIONS=====');
+        process.exit(1);
     }
 })();
