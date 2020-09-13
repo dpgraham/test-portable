@@ -1,4 +1,4 @@
-name: Build and Test Bundles
+name: Build and Test MacOS Bundle
 
 on:
   pull_request:
@@ -6,32 +6,29 @@ on:
 
 jobs:
   # Build the bundles
-  bundle-win:
-    runs-on: windows-latest
+  bundle-macos:
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js 14.x
       uses: actions/setup-node@v1
       with:
         node-version: 14.x
-    - run: bash ./scripts/bundle-win.sh
+    - run: bash ./scripts/bundle-macos.sh
     - name: Archive bundle
-      uses: azure/powershell@v1
-      with:
-        inlineScript: |
-          Compress-Archive bundles/bundle-win bundle-win.zip
-        azPSVersion: '3.1.0'
+      run: zip -r ../../bundle-macos.zip . 
+      working-directory: ./bundles/bundle-macos/
     - name: Upload bundle
       uses: actions/upload-artifact@v2
       with:
-        name: bundle-win
+        name: bundle-macos
         path: |
-          ./bundle-win.zip
+          ./bundle-macos.zip
 
   # Download and test the bundle on another machine and test it
-  test-win:
-    runs-on: windows-latest
-    needs: bundle-win
+  test-macos:
+    runs-on: macos-latest
+    needs: bundle-macos
     steps:
     - name: Use Node.js 14.x
       uses: actions/setup-node@v1
@@ -40,23 +37,22 @@ jobs:
     - name: Download bundle
       uses: actions/download-artifact@v2
       with:
-        name: bundle-win
+        name: bundle-macos
         path: artifacts/
     - name: Display structure of downloaded files
       run: ls -R
       working-directory: artifacts/
     - name: Unarchive bundle
-      uses: azure/powershell@v1
-      with:
-        inlineScript: |
-          Expand-Archive -Path ./artifacts/bundle-win.zip -DestinationPath ./artifacts/
-        azPSVersion: '3.1.0'
+      run: unzip ./artifacts/bundle-macos.zip -d ./artifacts/bundle-macos/
     - name: Display structure of decompressed files
       run: ls -R
       working-directory: artifacts/
+    - name: Set NPM config cache
+      run: npm config set cache ./artifacts/bundle-macos/__sauce/__cache/npm/ 
     - name: Run tests on bundle
       run: npm test
-      working-directory: artifacts/bundle-win/__sauce/
+      working-directory: artifacts/bundle-macos/__sauce/
       env:
+        # This doesn't do anything, but keeping it around in-case we ever need Cypress on macOS
         CYPRESS_CACHE_FOLDER: __cache/Cypress
       
