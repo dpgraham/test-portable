@@ -26,7 +26,7 @@ jobs:
 
   # Download and test the bundle on another machine and test it
   test-macos:
-    runs-on: windows-latest
+    runs-on: macos-latest
     needs: bundle-macos
     steps:
     - name: Use Node.js 14.x
@@ -42,7 +42,7 @@ jobs:
       run: ls -R
       working-directory: artifacts/
     - name: Unarchive bundle
-      run: unzip ./artifacts/bundle-win.zip -d ./artifacts/bundles/bundle-win/
+      run: unzip ./artifacts/bundle-mac.zip -d ./artifacts/bundles/bundle-mac/
     - name: Display structure of decompressed files
       run: ls -R
       working-directory: artifacts/
@@ -50,5 +50,6 @@ jobs:
       run: npm test
       working-directory: artifacts/bundle-macos/__sauce/
       env:
+        # This doesn't do anything, but keeping it around in-case we need Cypress on macOS
         CYPRESS_CACHE_FOLDER: __cache/Cypress
       
