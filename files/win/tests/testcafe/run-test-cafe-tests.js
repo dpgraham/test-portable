@@ -20,6 +20,8 @@ async function main () {
         await main();
         console.log('=======DONE VERIFYING TESTCAFE INSTALLATIONS=======');
     } catch (e) {
-        console.log('=======FAILED VERIFYING TESTCAFE INSTALLATIONS=====');
+        console.error(e);
+        console.error('=======FAILED VERIFYING TESTCAFE INSTALLATIONS=====');
+        process.exit(1);
     }
 })();
