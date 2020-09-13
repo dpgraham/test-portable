@@ -53,6 +53,6 @@ jobs:
       run: npm test
       working-directory: artifacts/bundle-macos/__sauce/
       env:
-        # This doesn't do anything, but keeping it around in-case we need Cypress on macOS
+        # This doesn't do anything, but keeping it around in-case we ever need Cypress on macOS
         CYPRESS_CACHE_FOLDER: __cache/Cypress
       
