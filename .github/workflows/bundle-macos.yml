@@ -16,7 +16,7 @@ jobs:
         node-version: 14.x
     - run: bash ./scripts/bundle-macos.sh
     - name: Archive bundle
-      run: zip -r bundle-macos.zip ./bundles/bundle-macos/ 
+      run: zip -r ./bundle-macos.zip ./bundles/bundle-macos/ 
     - name: Upload bundle
       uses: actions/upload-artifact@v2
       with:
@@ -42,7 +42,7 @@ jobs:
       run: ls -R
       working-directory: artifacts/
     - name: Unarchive bundle
-      run: unzip ./artifacts/bundle-mac.zip -d ./artifacts/bundles/bundle-mac/
+      run: unzip ./artifacts/bundle-macos.zip -d ./artifacts/bundles/bundle-macos/
     - name: Display structure of decompressed files
       run: ls -R
       working-directory: artifacts/
