@@ -16,6 +16,5 @@
   },
   "homepage": "https://github.com/dpgraham/sauce-test-portable#readme",
   "dependencies": {
-    "appium--v1.18.1": "npm:appium@1.18.1"
   }
 }
