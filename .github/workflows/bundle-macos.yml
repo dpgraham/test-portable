@@ -1,4 +1,4 @@
-name: Build and Test Bundles
+name: Build and Test MacOS Bundle
 
 on:
   pull_request:
@@ -16,11 +16,7 @@ jobs:
         node-version: 14.x
     - run: bash ./scripts/bundle-macos.sh
     - name: Archive bundle
-      uses: azure/powershell@v1
-      with:
-        inlineScript: |
-          Compress-Archive bundles/bundle-macos bundle-macos.zip
-        azPSVersion: '3.1.0'
+      run: zip -r bundle-win.zip ./bundles/bundle-macos/ 
     - name: Upload bundle
       uses: actions/upload-artifact@v2
       with:
@@ -46,11 +42,7 @@ jobs:
       run: ls -R
       working-directory: artifacts/
     - name: Unarchive bundle
-      uses: azure/powershell@v1
-      with:
-        inlineScript: |
-          Expand-Archive -Path ./artifacts/bundle-macos.zip -DestinationPath ./artifacts/
-        azPSVersion: '3.1.0'
+      run: unzip ./artifacts/bundle-win.zip -d ./artifacts/bundles/bundle-win/
     - name: Display structure of decompressed files
       run: ls -R
       working-directory: artifacts/

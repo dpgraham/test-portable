@@ -1,4 +1,4 @@
-name: Build and Test Bundles
+name: Build and Test Windows Bundle
 
 on:
   pull_request:
