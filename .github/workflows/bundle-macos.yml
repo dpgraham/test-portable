@@ -16,7 +16,8 @@ jobs:
         node-version: 14.x
     - run: bash ./scripts/bundle-macos.sh
     - name: Archive bundle
-      run: zip -r ./bundle-macos.zip ./bundles/bundle-macos/ 
+      run: zip -r ../../bundle-macos.zip . 
+      working-directory: ./bundles/bundle-macos/
     - name: Upload bundle
       uses: actions/upload-artifact@v2
       with:
