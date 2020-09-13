@@ -19,7 +19,7 @@ Instructions on how to install and run test portable from a Windows machine
 ## Usage Examples
 These usage examples all assume the working directory is wherever you extracted the bundle.
 
-And the examples are all in bash, sorry
+(And the examples are all in bash, sorry)
 
 ### Cypress
 
@@ -28,14 +28,8 @@ And the examples are all in bash, sorry
 ./node_modules/cypress--v5.1.0/bin/cypress run /path/to/cypress-tests/
 ```
 
-### Run a TestCafe Test on Edge
+### Run a TestCafe Test
 ```bash
-# Run a TestCafe test on version 1.9.2 on edge
-./node_modules/testcafe--v1.9.2/bin/testcafe-with-v8-flag-filter.js edge /path/to/testcafe/tests/
-```
-
-### Run a TestCafe Test on a specific browser binary
-```bash
-# Run a TestCafe test on version 1.9.2 on a specific browser binary
-./node_modules/testcafe--v1.9.2/bin/testcafe-with-v8-flag-filter.js /path/to/browser-binary /path/to/testcafe/tests/
+# Run a TestCafe test on version 1.9.2
+./node_modules/testcafe--v1.9.2/bin/testcafe-with-v8-flag-filter.js <test-cafe args>
 ```
