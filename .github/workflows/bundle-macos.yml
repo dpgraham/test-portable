@@ -1,0 +1,62 @@
+name: Build and Test Bundles
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  # Build the bundles
+  bundle-macos:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+    - run: bash ./scripts/bundle-macos.sh
+    - name: Archive bundle
+      uses: azure/powershell@v1
+      with:
+        inlineScript: |
+          Compress-Archive bundles/bundle-macos bundle-macos.zip
+        azPSVersion: '3.1.0'
+    - name: Upload bundle
+      uses: actions/upload-artifact@v2
+      with:
+        name: bundle-macos
+        path: |
+          ./bundle-macos.zip
+
+  # Download and test the bundle on another machine and test it
+  test-macos:
+    runs-on: windows-latest
+    needs: bundle-macos
+    steps:
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+    - name: Download bundle
+      uses: actions/download-artifact@v2
+      with:
+        name: bundle-macos
+        path: artifacts/
+    - name: Display structure of downloaded files
+      run: ls -R
+      working-directory: artifacts/
+    - name: Unarchive bundle
+      uses: azure/powershell@v1
+      with:
+        inlineScript: |
+          Expand-Archive -Path ./artifacts/bundle-macos.zip -DestinationPath ./artifacts/
+        azPSVersion: '3.1.0'
+    - name: Display structure of decompressed files
+      run: ls -R
+      working-directory: artifacts/
+    - name: Run tests on bundle
+      run: npm test
+      working-directory: artifacts/bundle-macos/__sauce/
+      env:
+        CYPRESS_CACHE_FOLDER: __cache/Cypress
+      

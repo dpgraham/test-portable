@@ -2,13 +2,15 @@
 A portable, multi-platform bundle that has test dependencies (Cypress, TestCafe, Appium, etc...) pre-installed.
 
 ## Quick Start
+
+### Windows
 ```bash
 # Install and run Cypress verify
-export PLATFORM="win" # Replace with macOS or linux depending on environment
-wget github.com/dpgraham/test-portable/latest/bundle-$PLATFORM
-unzip bundle-$PLATFORM.zip -d bundle/
+wget github.com/dpgraham/test-portable/latest/bundle-win
+unzip bundle-win.zip -d bundle/
 cd bundle/
-export CYPRESS_VERSION="5.1.0"
+export CYPRESS_VERSION="5.1.0" # Configurable
+export CYPRESS_CACHE_FOLDER=./__sauce/__cache/Cypress/
 ./node_modules/cypress--v$CYPRESS_VERSION/bin/cypress verify
 ```
 

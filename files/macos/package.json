@@ -1,10 +1,9 @@
 {
-  "name": "sauce-test-portable",
-  "version": "1.0.0",
+  "private": true,
   "description": "A portable, multi-platform bundle with all your Sauce Labs testing needs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "bash ./test.sh"
   },
   "repository": {
     "type": "git",
