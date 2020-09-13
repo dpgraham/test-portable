@@ -42,7 +42,7 @@ jobs:
       run: ls -R
       working-directory: artifacts/
     - name: Unarchive bundle
-      run: unzip ./artifacts/bundle-macos.zip -d ./artifacts/bundles/bundle-macos/
+      run: unzip ./artifacts/bundle-macos.zip -d ./artifacts/bundle-macos/
     - name: Display structure of decompressed files
       run: ls -R
       working-directory: artifacts/
