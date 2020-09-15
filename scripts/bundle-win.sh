@@ -5,6 +5,7 @@ mkdir -p ./bundles/bundle-win/
 mkdir -p ./bundles/bundle-win/
 cp -r ./files/win/. ./bundles/bundle-win/
 cp -r ./files/install.sh ./bundles/bundle-win/install.sh
+cp -r ./files/test-all.sh ./bundles/bundle-win/test-all.sh
 
 # Install dependencies
 pushd ./bundles/bundle-win/
