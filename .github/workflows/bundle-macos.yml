@@ -16,8 +16,13 @@ jobs:
         node-version: 14.x
     - run: bash ./scripts/bundle-macos.sh
     - name: Archive bundle
-      run: zip -r ../../bundle-macos.zip . 
-      working-directory: ./bundles/bundle-macos/
+      uses: azure/powershell@v1
+      with:
+        inlineScript: |
+          Compress-Archive bundles/bundle-macos bundle-macos.zip
+        azPSVersion: '3.1.0'
+    - name: Display directory structure of bundle
+      run: ls -R ./bundles/bundle-macos
     - name: Upload bundle
       uses: actions/upload-artifact@v2
       with:
@@ -43,27 +48,21 @@ jobs:
       run: ls -R
       working-directory: artifacts/
     - name: Unarchive bundle
-      run: unzip ./artifacts/bundle-macos.zip -d ./artifacts/bundle-macos/
+      uses: azure/powershell@v1
+      with:
+        inlineScript: |
+          Expand-Archive -Path ./artifacts/bundle-macos.zip -DestinationPath ./artifacts/
+        azPSVersion: '3.1.0'
     - name: Display structure of decompressed files
       run: ls -R
       working-directory: artifacts/
     - name: Set NPM config cache
-      run: npm config set cache ./artifacts/bundle-macos/__cache/npm/ 
+      run: npm config set cache ./artifacts/bundle-macos/__cache/npm/
+    - name: Verify npm cache
+      run: npm cache verify
     - name: Run tests on bundle
-      run: npm test
+      run: bash ./test-all.sh
       working-directory: artifacts/bundle-macos/
       env:
-        # This doesn't do anything, but keeping it around in-case we ever need Cypress on macOS
         CYPRESS_CACHE_FOLDER: __cache/Cypress
-    - name: Create Release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        body: |
-          TODO: Make this better!
-        draft: true
-        prerelease: true
       

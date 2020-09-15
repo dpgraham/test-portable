@@ -21,6 +21,8 @@ jobs:
         inlineScript: |
           Compress-Archive bundles/bundle-win bundle-win.zip
         azPSVersion: '3.1.0'
+    - name: Display directory structure of bundle
+      run: ls -R ./bundles/bundle-win
     - name: Upload bundle
       uses: actions/upload-artifact@v2
       with:
@@ -55,7 +57,9 @@ jobs:
       run: ls -R
       working-directory: artifacts/
     - name: Set NPM config cache
-      run: npm config set cache ./artifacts/bundle-win/__cache/npm/ 
+      run: npm config set cache ./artifacts/bundle-win/__cache/npm/
+    - name: Verify npm cache
+      run: npm cache verify
     - name: Run tests on bundle
       run: bash ./test-all.sh
       working-directory: artifacts/bundle-win/

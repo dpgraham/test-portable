@@ -8,7 +8,7 @@ Instructions on how to install and run test portable from a Windows machine
 * Unzip the bundle to your desired directory
 
 ### Cypress Setup
-* Requires that `CYPRESS_CACHE_FOLDER` is set to `/__cache/Cypress`
+* Using Cypress that `CYPRESS_CACHE_FOLDER` is set to `./__cache/Cypress`
 
 ## Pre-requisites
 * `npm` (`node` is pre-bundled)
