@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "A portable, multi-platform bundle with all your Sauce Labs testing needs",
   "main": "index.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

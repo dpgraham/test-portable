@@ -4,6 +4,8 @@
 mkdir -p ./bundles/bundle-macos/
 mkdir -p ./bundles/bundle-macos/
 cp -r ./files/macos/. ./bundles/bundle-macos/
+cp -r ./files/install.sh ./bundles/bundle-win/install.sh
+cp -r ./files/test-all.sh ./bundles/bundle-win/test-all.sh
 
 # Install dependencies
 pushd ./bundles/bundle-macos/
@@ -11,7 +13,6 @@ mkdir -p ./
 cp $(which node) ./node
 cp ./package.json ./package.json
 npm config set cache $PWD/__cache/npm/
-npm install
-rm -rf ./package.json
-rm -rf ./package-lock.json
+bash ./install.sh
+rm -rf ./install.sh
 popd

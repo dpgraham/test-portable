@@ -8,7 +8,7 @@ async function main () {
     for (const dependencyName of Object.keys(dependencies)) {
         if (dependencyName.startsWith('cypress--')) {
             console.log('Verifying ' + dependencyName);
-            await promisify(exec)(`${path.join(__dirname, '..', '..', 'node_modules', dependencyName, 'bin', 'cypress')} verify`);
+            await promisify(exec)(`${path.join(__dirname, '..', '..', 'cypress', 'node_modules', dependencyName, 'bin', 'cypress')} verify`);
             console.log('Successfully verified ' + dependencyName);
         }
     }
