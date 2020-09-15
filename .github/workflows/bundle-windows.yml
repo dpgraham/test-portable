@@ -57,7 +57,7 @@ jobs:
     - name: Set NPM config cache
       run: npm config set cache ./artifacts/bundle-win/__cache/npm/ 
     - name: Run tests on bundle
-      run: bash ./
+      run: bash ./test-all.sh
       working-directory: artifacts/bundle-win/
       env:
         CYPRESS_CACHE_FOLDER: __cache/Cypress
