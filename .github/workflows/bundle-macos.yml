@@ -18,6 +18,8 @@ jobs:
     - name: Archive bundle
       run: zip -r ../../bundle-macos.zip . 
       working-directory: ./bundles/bundle-macos/
+    - name: Display directory structure of bundle
+      run: ls -R ./bundles/bundle-macos
     - name: Upload bundle
       uses: actions/upload-artifact@v2
       with:
@@ -48,11 +50,12 @@ jobs:
       run: ls -R
       working-directory: artifacts/
     - name: Set NPM config cache
-      run: npm config set cache ./artifacts/bundle-macos/__sauce/__cache/npm/ 
+      run: npm config set cache ./artifacts/bundle-macos/__cache/npm/
+    - name: Verify npm cache
+      run: npm cache verify
     - name: Run tests on bundle
-      run: npm test
-      working-directory: artifacts/bundle-macos/__sauce/
+      run: bash ./test-all.sh
+      working-directory: artifacts/bundle-macos/
       env:
-        # This doesn't do anything, but keeping it around in-case we ever need Cypress on macOS
         CYPRESS_CACHE_FOLDER: __cache/Cypress
       

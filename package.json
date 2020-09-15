@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "description": "A portable, multi-platform bundle with all your Sauce Labs testing needs",
   "main": "index.js",
-  "dependencies": {
-    "cypress": "^5.1.0",
-    "yarn": "^1.22.5"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

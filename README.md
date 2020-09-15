@@ -10,7 +10,7 @@ wget github.com/dpgraham/test-portable/latest/bundle-win
 unzip bundle-win.zip -d bundle/
 cd bundle/
 export CYPRESS_VERSION="5.1.0" # Configurable
-export CYPRESS_CACHE_FOLDER=./__sauce/__cache/Cypress/
+export CYPRESS_CACHE_FOLDER=./__cache/Cypress/
 ./node_modules/cypress--v$CYPRESS_VERSION/bin/cypress verify
 ```
 

@@ -105,3 +105,5 @@ dist
 
 bundles/
 __cypress_cache
+
+*.DS_Store
