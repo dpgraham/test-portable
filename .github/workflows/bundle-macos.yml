@@ -48,10 +48,10 @@ jobs:
       run: ls -R
       working-directory: artifacts/
     - name: Set NPM config cache
-      run: npm config set cache ./artifacts/bundle-macos/__sauce/__cache/npm/ 
+      run: npm config set cache ./artifacts/bundle-macos/__cache/npm/ 
     - name: Run tests on bundle
       run: npm test
-      working-directory: artifacts/bundle-macos/__sauce/
+      working-directory: artifacts/bundle-macos/
       env:
         # This doesn't do anything, but keeping it around in-case we ever need Cypress on macOS
         CYPRESS_CACHE_FOLDER: __cache/Cypress

@@ -55,10 +55,10 @@ jobs:
       run: ls -R
       working-directory: artifacts/
     - name: Set NPM config cache
-      run: npm config set cache ./artifacts/bundle-win/__sauce/__cache/npm/ 
+      run: npm config set cache ./artifacts/bundle-win/__cache/npm/ 
     - name: Run tests on bundle
-      run: npm test
-      working-directory: artifacts/bundle-win/__sauce/
+      run: bash ./
+      working-directory: artifacts/bundle-win/
       env:
         CYPRESS_CACHE_FOLDER: __cache/Cypress
       

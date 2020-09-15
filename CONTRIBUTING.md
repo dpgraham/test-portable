@@ -20,15 +20,15 @@ bash ./scripts/bundle-{platform}.sh
 ```
 
 ### What this does
-* Copies all the files in `/files/{platform}/` over to `/bundles/bundle-{platform}/__sauce/`
+* Copies all the files in `/files/{platform}/` over to `/bundles/bundle-{platform}/`
 * Copies `package.json` to `/bundles/bundle-{platform}/` and run `npm install` to get the dependencies in `node_modules`
-* Copies `node` binary to `/bundles/bundle-{platform}/__sauce/` so that users of the bundle have access to the same `node` binary that was used to build the bundle in the first place
+* Copies `node` binary to `/bundles/bundle-{platform}/` so that users of the bundle have access to the same `node` binary that was used to build the bundle in the first place
 
 ### Run smoke tests
 To run smoke tests on a bundle:
 
 ```
-cd /bundles/bundle-{platform}/__sauce/
+cd /bundles/bundle-{platform}/
 npm test
 ```
 
