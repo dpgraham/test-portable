@@ -1,4 +1,4 @@
-const dependencies = require('../../package.json').dependencies;
+const dependencies = require('../package.json').dependencies;
 const exec = require('child_process').exec;
 const promisify = require('bluebird').promisify;
 const path = require('path');
