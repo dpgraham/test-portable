@@ -16,11 +16,8 @@ jobs:
         node-version: 14.x
     - run: bash ./scripts/bundle-macos.sh
     - name: Archive bundle
-      uses: azure/powershell@v1
-      with:
-        inlineScript: |
-          Compress-Archive bundles/bundle-macos bundle-macos.zip
-        azPSVersion: '3.1.0'
+      run: zip -r ../../bundle-macos.zip . 
+      working-directory: ./bundles/bundle-macos/
     - name: Display directory structure of bundle
       run: ls -R ./bundles/bundle-macos
     - name: Upload bundle
@@ -48,11 +45,7 @@ jobs:
       run: ls -R
       working-directory: artifacts/
     - name: Unarchive bundle
-      uses: azure/powershell@v1
-      with:
-        inlineScript: |
-          Expand-Archive -Path ./artifacts/bundle-macos.zip -DestinationPath ./artifacts/
-        azPSVersion: '3.1.0'
+      run: unzip ./artifacts/bundle-macos.zip -d ./artifacts/bundle-macos/
     - name: Display structure of decompressed files
       run: ls -R
       working-directory: artifacts/
